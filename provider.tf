@@ -9,7 +9,7 @@ terraform {
     bucket = "tf-bucket-for-jenkins-line"
     key    = "production/terraform.tfstate"
     region = "us-east-1"
-    dynamodb_table = "tf_locking_table"
+    use_lockfile = "tf_locking_table"
     encrypt        = true
   }
 }
