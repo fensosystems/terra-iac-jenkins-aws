@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "my-tf-zyq-state-file-bucket"
+    bucket = "tf-bucket-for-jenkins-line"
     key    = "production/terraform.tfstate"
     region = "us-east-1"
     dynamodb_table = "tf_locking_table"
