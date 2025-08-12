@@ -9,7 +9,7 @@ terraform {
     bucket = "tf-bucket-for-jenkins-line"
     key    = "production/terraform.tfstate"
     region = "us-east-1"
-    use_lockfile = "tf_locking_table"
+    use_lockfile = true # Correct usage
     encrypt        = true
   }
 }
