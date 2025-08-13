@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters{
-        choice(name: "ACTION", choice: ["destroy", "apply"], description: "select terraform action to perform on resource")
+        choice(name: "ACTION", choices: ["destroy", "apply"], description: "select terraform action to perform on resource")
     }
     stages{
         stage('checkout from GIT'){
