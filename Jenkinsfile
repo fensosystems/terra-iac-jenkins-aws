@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    parameters{
+        choice(name: "ACTION", choice: ["destroy", "apply"], description: "select terraform action to perform on resource")
+    }
     stages{
         stage('checkout from GIT'){
             steps{
@@ -13,7 +16,7 @@ pipeline{
         }
         stage('Terraform Apply'){
            steps{
-                sh 'terraform apply --auto-approve'
+                sh 'terraform params.ACTION --auto-approve'
            }
         }
     }   
