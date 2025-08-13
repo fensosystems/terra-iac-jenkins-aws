@@ -41,5 +41,11 @@ pipeline{
                 sh 'terraform ${ACTION} --auto-approve'
            }
         }
-    }   
+    }  
+    post {
+        always {
+            // Optional: Clean up workspace
+            cleanWs()
+        }
+    }
 }
