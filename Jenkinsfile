@@ -9,6 +9,26 @@ pipeline{
                git branch: 'main', url: 'https://github.com/fensosystems/terra-iac-jenkins-aws'
             }
         }
+
+        stage('Terraform plan') {
+                when {
+                    expression { return params.Proceed }
+                }
+                agent {
+                    docker {
+                        image 'zenika/terraform-aws-cli'
+                        reuseNode true
+                    }
+                }
+                steps {
+                    sh '''
+                        echo 'with DOCKER'
+                        terraform apply --auto-approve
+                        aws --version
+                        ls -la
+                    '''
+                }
+        } 
         stage('Terraform Init'){
             steps{
                 sh 'terraform init'
