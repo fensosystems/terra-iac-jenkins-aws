@@ -2,6 +2,7 @@ pipeline{
     agent any
     parameters{
         choice(name: "ACTION", choices: ["destroy", "apply"], description: "select terraform action to perform on resource")
+        booleanParam(name: "Proceed", defaultValue: false, description: "Proceed?")
     }
     stages{
         stage('checkout from GIT'){
@@ -16,7 +17,8 @@ pipeline{
                 }
                 agent {
                     docker {
-                        image 'zenika/terraform-aws-cli'
+                        image 'node:18-alpine'
+                        //image 'zenika/terraform-aws-cli'
                         reuseNode true
                     }
                 }
